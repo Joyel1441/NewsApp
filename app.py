@@ -369,6 +369,6 @@ api.add_resource(api_topcryptos, '/api/cryptodata')
     
         
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
    
 

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <style></style>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <style></style>
+
+    <title>TopCrypto</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-danger"
+      style="margin-bottom: 2.5em"
+    >
+      <div class="container-fluid">
+        <!--div class="container red topBotomBordersOut"-->
+        <a class="navbar-brand" href="{{url_for('Index')}}">NewsApp</a>
+        <a class="navbar-brand" href="{{url_for('Index')}}"
+          ><img
+            src="{{url_for('static',filename='LOGO1.png')}}"
+            style="height: 2em; width: 2em"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav" style="margin-left: auto">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="{{url_for('Index')}}"
+                >All</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('technology')}}"
+                >Technology</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('sports')}}">Sports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('business')}}">Business</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="{{url_for('crypto')}}"
+                style="margin-bottom: 0.5rem"
+                >Crypto</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <!-- <button onclick="myFunction">Dark/Light Theme</button> -->
+
+              <div
+                class="form-check form-switch nav-link"
+                style="margin-left: 2.5rem"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="flexSwitchCheckChecked"
+                  onclick="myFunction()"
+                />
+
+                <label class="form-check-label" for="flexSwitchCheckChecked"
+                  ><i class="fas fa-sun"></i
+                ></label>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        background-color: white;
+        color: black;
+      }
+
+      .dark-mode {
+        background-color: black;
+        color: white !important;
+      }
+    </style>
+
+    <script>
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+        // toggle if dark mode is set to on or off
+        if (document.getElementById("flexSwitchCheckChecked").checked) {
+          document.getElementsByClassName("form-check-label")[0].innerHTML =
+            '<i class="fas fa-moon"></i>';
+        } else {
+          document.getElementsByClassName("form-check-label")[0].innerHTML =
+            '<i class="fas fa-sun"></i>';
+        }
+      }
+    </script>
+
+    <!-- Top Crypto data -->
+
+    <center><h1>Top Cryptos</h1></center>
+
+    <div class="container">
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td><b>Coin name</b></td>
+            <td><b>MKT cap</b></td>
+            <td><b>FD MKT cap</b></td>
+            <td><b>Price</b></td>
+            <td><b>Avail coins</b></td>
+            <td><b>Total coins</b></td>
+            <td><b>Traded volume</b></td>
+          </tr>
+          {% for coin_info in coin_data %}
+          <tr>
+            <td>{{coin_info[0]}}</td>
+            <td>{{coin_info[1]}}</td>
+            <td>{{coin_info[2]}}</td>
+            <td>{{coin_info[3]}}</td>
+            <td>{{coin_info[4]}}</td>
+            <td>{{coin_info[5]}}</td>
+            <td>{{coin_info[6]}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <center>
+        <a href="{{ url_for('excel') }}" class="btn btn-secondary"
+          >Download as EXCEL</a
+        >
+        <a href="{{ url_for('csv_') }}" class="btn btn-secondary"
+          >Download as CSV</a
+        >
+      </center>
+    </div>
+    <style>
+      @import "https://fonts.googleapis.com/css?family=Raleway";
+
+      html,
+      body {
+        margin: 0px;
+      }
+
+      header,
+      footer {
+        font-family: Raleway;
+        margin: 0 auto;
+        padding: 5em 3em;
+        text-align: center;
+        background: #555;
+      }
+
+      header h1 {
+        color: #aaa;
+        font-size: 40px;
+        font-weight: lighter;
+      }
+
+      header span {
+        color: #222;
+      }
+
+      footer span {
+        color: #aaa;
+      }
+
+      div.container {
+        font-family: Raleway;
+      }
+
+      div.container a {
+        color: #fff;
+        text-decoration: none;
+        font: 20px Raleway;
+
+        position: relative;
+        z-index: 0;
+        cursor: pointer;
+      }
+
+      /* Top and Bottom borders go out */
+      div.topBotomBordersOut a:before,
+      div.topBotomBordersOut a:after {
+        position: absolute;
+        left: 0px;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        content: "";
+        opacity: 0;
+        transition: all 0.3s;
+      }
+
+      div.topBotomBordersOut a:before {
+        top: 0px;
+        transform: translateY(10px);
+      }
+
+      div.topBotomBordersOut a:after {
+        bottom: 0px;
+        transform: translateY(-10px);
+      }
+
+      div.topBotomBordersOut a:hover:before,
+      div.topBotomBordersOut a:hover:after {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    </style>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

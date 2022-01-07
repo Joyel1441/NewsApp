@@ -4,6 +4,4 @@ requests
 bs4
 openpyxl
 python-docx
-csv
 json
-ast

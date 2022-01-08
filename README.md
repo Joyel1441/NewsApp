@@ -1,6 +1,6 @@
 # NewsApp
 
-Contributers:
+Contributers: \
 Joyel D'Silva \
 Prathik G. \
 Krithik Kiran \

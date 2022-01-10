@@ -1,9 +1,9 @@
 # NewsApp
 
 Contributers: \
-Joyel D'Silva \
-Prathik G. \
-Krithik Kiran \
-Sachith 
+Joyel D'Silva (backend) \
+Prathik G. (UI) \
+Krithik Kiran (UI) \
+Sachith (backend)
 --- 
 [live app](https://newsapp0000.herokuapp.com/)
